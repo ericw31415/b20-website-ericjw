@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% filter indent(4, first=True) %}
+<script src="{{ url_for('static', filename='remarks.js') }}" defer></script>
+{% endfilter %}
+{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Dashboard</h1>
+<p>
+  Welcome back to CSCB20, {{ session["name"] }}!
+</p>
+<section>
+  <h2>New Assessment</h2>
+  <form action="{{ url_for('new_ass') }}" method="post">
+    <div id="error">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div>{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+    <label for="new-ass">Enter a new assessment name:</label>
+    <input id="new-ass" name="ass" required>
+    <label for="ass-type">Select an assessment type:</label>
+    <select id="ass-type" name="type">
+      <option value="ass">Assignment</option>
+      <option value="lab">Lab</option>
+      <option value="test">Test</option>
+    </select>
+    <input type="submit" value="Create assessment" required>
+  </form>
+  <h2>Marks</h2>
+  <form action="{{ url_for('marks') }}" method="post">
+    <label for="ass">Select an assessment to view:</label>
+    <select id="ass" name="ass" required>
+      {% for ass in asses %}
+      <option value="{{ ass['id'] }}">{{ ass["name"] }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="View marks">
+  </form>
+</section>
+<section id="feedback">
+  <h2>Anonymous Feedback</h2>
+  {% if feedback %}
+  {% for item in feedback %}
+  <h3>Feedback</h3>
+  <p><strong>Question:</strong> {{ item["question"] }}</p>
+  <p><strong>Response:</strong> {{ item["response"] }}</p>
+  {% endfor %}
+  {% else %}
+  <p>Nothing to show.</p>
+  {% endif %}
+</section>
+<section>
+  <h2>Remark Requests</h2>
+  <form class="dummy-form" action="{{ url_for('remark_status') }}" method="post">
+    <input type="hidden" id="username" name="username">
+    <input type="hidden" id="ass-id" name="ass-id">
+    <input type="hidden" id="status" name="status">
+  </form>
+  {% if remarks %}
+  <div class="table">
+    <div class="tr th">
+      <div class="td">Username</div>
+      <div class="td">Name</div>
+      <div class="td">Assessment</div>
+      <div class="td">Reason</div>
+      <div class="td"></div>
+    </div>
+  {% for request in remarks %}
+    <div class="tr">
+      <div class="td">{{ request["username"] }}</div>
+      <div class="td">{{ request["name"] }}</div>
+      <div class="td">{{ request["ass"] }}</div>
+      <div class="td">{{ request["why"] }}</div>
+      <div class="td">
+        <button class="mini-button" onclick="accept('{{ request["username"] }}', {{ request["ass_id"] }})">&check;</button>
+        <button class="mini-button" onclick="reject('{{ request["username"] }}', {{ request["ass_id"] }})">&cross;</button>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% else %}
+  <p>Nothing to show.</p>
+  {% endif %}
+</section>
+{% endfilter %}
+{% endblock %}

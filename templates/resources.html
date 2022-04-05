@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Resources{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Resources</h1>
+<ul>
+  <li>
+    <a href="index.html"><strong>Course website:</strong></a>
+    Course information, lecture notes, tutorial material, important announcements, etc. will be posted on the course website.
+    It is your responsibility to visit it frequently.
+  </li>
+  <li>
+    Beginner Tutorial for <a href="http://code.tutsplus.com/tutorials/sql-for-beginners--net-8200">MySQL</a>
+  </li>
+  <li>
+    <strong>Email communication:</strong> Questions regarding the course material, assignments, midterm, etc. should be posed on the bulletin board.
+    Questions about the assignment which you feel you cannot formulate without revealing your solution (should be very rare!), as well as questions and concerns regarding your personal matters should be directed to the instructor.
+  </li>
+  <li>
+    <strong>Discussion board:</strong> You are encouraged to use the bulletin board to discuss the course material, pose questions on the assignments, etc.
+    The bulletin board will be monitored by the instructor and by your TAs.
+    Please, be very careful not to reveal (parts of) your solution on the bulletin board.
+  </li>
+</ul>
+{% endfilter %}
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% filter indent(4, first=True) %}
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+{% endfilter %}
+{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>CSCB20&mdash;Introduction to Databases and Web Applications</h1>
+{% if not session["username"] %}
+<p>
+  Please <a href="{{ url_for('login') }}">log in</a> to view the full website.
+{% endif %}
+</p>
+<section>
+  <h2>Course Description</h2>
+  <p>
+    A practical introduction to databases and Web app development. Databases: terminology and applications; creating, querying and updating databases; the entity-relationship model for database design. Web documents and applications: static and interactive documents; Web servers and dynamic server-generated content; Web application development and interface with databases.
+  </p>
+  <p>
+    <strong>Prerequisite:</strong>
+    Some experience with programming in an imperative language such as Python, Java or C.
+  </p>
+  <p>
+    <strong>Exclusion:</strong>
+    This course may not be taken after - or concurrently with - any C- or D-level CSC course.
+  </p>
+  {% if session["username"] %}
+  <p>
+    <strong>Syllabus:</strong>
+    <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+  </p>
+  {% endif %}
+</section>
+{% if session["username"] %}
+<section id="team">
+  <h2>Course Team</h2>
+  <div id="team-info" class="scroll">
+    <div class="member instructor">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Dr. Anna Bretscher</strong>
+      <em>Instructor</em>
+      <span>
+        <strong>E-mail:</strong>
+        bretscher@utsc.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC493
+      </span>
+      <span>
+        <strong>Phone:</strong>
+        (416) 208-4745
+      </span>
+      <span>
+        <strong>Lectures:</strong>
+        Mondays 09:15-11:00 in HW216
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Wednesdays 11:00-12:00
+      </span>
+    </div>
+    <div class="member">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Ass Istant</strong>
+      <em>Teaching Assistant</em>
+      <span>
+        <strong>E-mail:</strong>
+        ass.istant@mail.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC420
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Mondays 22:00-23:00
+      </span>
+    </div>
+    <div class="member">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Chako Taco</strong>
+      <em>Teaching Assistant</em>
+      <span>
+        <strong>E-mail:</strong>
+        chako.taco@mail.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC420
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Tuesdays 19:00-20:00
+      </span>
+    </div>
+    <div class="member">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Smart Person</strong>
+      <em>Teaching Assistant</em>
+      <span>
+        <strong>E-mail:</strong>
+        smart.person@mail.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC420
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Thursdays 03:00-04:00
+      </span>
+    </div>
+    <div class="member">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Tea Cher</strong>
+      <em>Teaching Assistant</em>
+      <span>
+        <strong>E-mail:</strong>
+        tea.cher@mail.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC420
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Friday 23:00-00:00
+      </span>
+    </div>
+    <div class="member">
+      <img class="team-img" alt="Smile" src="{{ url_for('static', filename='files/dummy.png') }}">
+      <strong>Un Happy</strong>
+      <em>Teaching Assistant</em>
+      <span>
+        <strong>E-mail:</strong>
+        un.happy@mail.utoronto.ca
+      </span>
+      <span>
+        <strong>Office:</strong>
+        IC420
+      </span>
+      <span>
+        <strong>Office hours:</strong>
+        Saturday 16:00-17:00
+      </span>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfilter %}
+{% endblock %}

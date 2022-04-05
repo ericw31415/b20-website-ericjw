@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}403 Forbidden{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Forbidden</h1>
+<p>
+  You do not have permission to access the requested resource.
+  Please make sure that you are <a href="{{ url_for('login') }}">logged in</a> and that your account has sufficient permissions.
+</p>
+{% endfilter %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% filter indent(4, first=True) %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+<script src="{{ url_for('static', filename='signup.js') }}" defer></script>
+{% endfilter %}
+{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Sign Up</h1>
+<div class="auth-tip">
+  Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+</div>
+<form class="auth" method="post">
+  <div id="error">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div>{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+  <label>Select a user type</label>
+  <div>
+    <label class="selection">
+      <input id="student" type="radio" name="acc-type" value="student" checked>
+      <span>Student</span>
+    </label>
+    <label class="selection">
+      <input id="instructor" type="radio" name="acc-type" value="instructor">
+      <span>Instructor</span>
+    </label>
+  </div>
+  <label for="name">Full name</label>
+  <input id="name" name="name" required>
+  <label for="username">
+    Username (numbers and letters only, maximum length 32)
+  </label>
+  <input id="username" name="username" maxlength="32" pattern="[0-9a-zA-Z]+" required>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" required>
+  <label for="confirm-password">Confirm password</label>
+  <input id="confirm-password" type="password" required>
+  <input type="submit">
+</form>
+{% endfilter %}
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Dashboard</h1>
+<p>
+  Welcome back to CSCB20, {{ session["name"] }}!
+</p>
+<section>
+  <h2>Marks</h2>
+  <h3>Assignments</h3>
+  {% if ass_marks %}
+  <div class="scroll">
+    <div class="table marks">
+      <div class="tr th">
+        <div class="td">Assignment</div>
+        <div class="td">Mark</div>
+        <div class="td"></div>
+      </div>
+      {% for mark in ass_marks %}
+      <div class="tr">
+        <div class="td">{{ mark["name"] }}</div>
+        <div class="td">
+          {% if mark["mark"] is none %}
+          &mdash;
+          {% else %}
+          {{ mark["mark"] }}
+          {% endif %}
+        </div>
+        <div class="td">
+          {% if remarks[mark["id"]][0] is not none %}
+          {% if remarks[mark["id"]][1] == "accepted" %}
+          Remark accepted
+          {% elif remarks[mark["id"]][1] == "rejected" %}
+          Remark rejected
+          {% else %}
+          Remark requested
+          {% endif %}
+          {% elif mark["mark"] is none %}
+          Mark unreleased
+          {% else %}
+          <a href="{{ url_for('remark', id=mark['id']) }}">Request remark</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p>
+    No assignments to show yet.
+  </p>
+  {% endif %}
+  <h3>Labs</h3>
+  {% if lab_marks %}
+  <div class="scroll">
+    <div class="table marks">
+      <div class="tr th">
+        <div class="td">Lab</div>
+        <div class="td">Mark</div>
+        <div class="td"></div>
+      </div>
+      {% for mark in lab_marks %}
+      <div class="tr">
+        <div class="td">{{ mark["name"] }}</div>
+        <div class="td">
+          {% if mark["mark"] is none %}
+          &mdash;
+          {% else %}
+          {{ mark["mark"] }}
+          {% endif %}
+        </div>
+        <div class="td">
+          {% if remarks[mark["id"]][0] is not none %}
+          {% if remarks[mark["id"]][1] == "accepted" %}
+          Remark accepted
+          {% elif remarks[mark["id"]][1] == "rejected" %}
+          Remark rejected
+          {% else %}
+          Remark requested
+          {% endif %}
+          {% elif mark["mark"] is none %}
+          Mark unreleased
+          {% else %}
+          <a href="{{ url_for('remark', id=mark['id']) }}">Request remark</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p>
+    No labs to show yet.
+  </p>
+  {% endif %}
+  <h3>Tests</h3>
+  {% if test_marks %}
+  <div class="scroll">
+    <div class="table marks">
+      <div class="tr th">
+        <div class="td">Test</div>
+        <div class="td">Mark</div>
+        <div class="td"></div>
+      </div>
+      {% for mark in test_marks %}
+      <div class="tr">
+        <div class="td">{{ mark["name"] }}</div>
+        <div class="td">
+          {% if mark["mark"] is none %}
+          &mdash;
+          {% else %}
+          {{ mark["mark"] }}
+          {% endif %}
+        </div>
+        <div class="td">
+          {% if remarks[mark["id"]][0] is not none %}
+          {% if remarks[mark["id"]][1] == "accepted" %}
+          Remark accepted
+          {% elif remarks[mark["id"]][1] == "rejected" %}
+          Remark rejected
+          {% else %}
+          Remark requested
+          {% endif %}
+          {% elif mark["mark"] is none %}
+          Mark unreleased
+          {% else %}
+          <a href="{{ url_for('remark', id=mark['id']) }}">Request remark</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p>
+    No tests to show yet.
+  </p>
+  {% endif %}
+</section>
+<section id="feedback">
+  <h2>Anonymous Feedback</h2>
+  <form method="post">
+    <label for="instructor">Who is the feedback for?</label>
+    <select id="instructor" name="instructor">
+      {% for instructor in instructors %}
+      <option value="{{ instructor['username'] }}">{{ instructor['name'] }}</option>
+      {% endfor %}
+    </select>
+    <label for="">What kind of feedback do you want to give?</label>
+    {% for question in questions %}
+    <label>
+      <input type="radio" name="question" value="{{ question['id'] }}" required>
+      {{ question['question'] }}
+    </label>
+    {% endfor %}
+    <label for="feedback">Please enter your feedback below:</label>
+    <textarea id="feedback" name="response" rows="10" required></textarea>
+    <input type="submit">
+  </form>
+</section>
+{% endfilter %}
+{% endblock %}

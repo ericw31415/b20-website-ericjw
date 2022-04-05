@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}Log In{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% filter indent(4, first=True) %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endfilter %}
+{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Log In</h1>
+<form class="auth" method="post">
+  <div id="error">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div>{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+  <label for="username">Username</label>
+  <input id="username" name="username" maxlength="32" pattern="[0-9a-zA-Z]+" required>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" required>
+  <input type="submit">
+</form>
+<div class="auth-tip">
+  Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a>
+</div>
+{% endfilter %}
+{% endblock %}

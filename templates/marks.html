@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Marks for {{ ass["name"] }}{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% filter indent(4, first=True) %}
+<link rel="stylesheet" href="{{ url_for('static', filename='marks.css') }}">
+<script src="{{ url_for('static', filename='marks.js') }}" defer></script>
+{% endfilter %}
+{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Marks for {{ ass["name"] }}</h1>
+<form class="dummy-form" action="{{ url_for('edit_marks') }}" method="post">
+  <input type="hidden" name="id" value="{{ ass_id }}">
+  <input type="hidden" id="data" name="data">
+</form>
+<div id="edit-buttons">
+  <button id="edit">Edit</button>
+  <button id="save">Save</button>
+  <button id="cancel">Cancel</button>
+</div>
+<div class="scroll">
+  <div class="table marks-sheet">
+    <div class="tr th">
+      <div class="td">Username</div>
+      <div class="td">Name</div>
+      <div class="td">Mark</div>
+    </div>
+    {% for mark in marks %}
+    <div class="tr">
+      <div class="td">{{ mark["username"] }}</div>
+      <div class="td">{{ mark["name"] }}</div>
+      <div class="td">
+        {% if mark["mark"] is none %}
+        &mdash;
+        {% else %}
+        {{ mark["mark"] }}
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endfilter %}
+{% endblock %}

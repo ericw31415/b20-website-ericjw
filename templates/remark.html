@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Request Remark{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Request Remark</h1>
+{% if allowed %}
+<p>
+  You are requesting a remark for the following: {{ ass["name"] }}
+</p>
+<form method="post">
+  <input type="hidden" name="id" value="{{ request.args.get('id') }}">
+  <label for="remark">Please explain why your work should be remarked:</label>
+  <textarea id="remark" name="why" rows="10" required></textarea>
+  <input type="submit">
+</form>
+{% else %}
+<p>
+  You are not allowed to submit a remark request for the following: {{ ass["name"] }}
+</p>
+{% endif %}
+{% endfilter %}
+{% endblock %}

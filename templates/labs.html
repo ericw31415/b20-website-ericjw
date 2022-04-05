@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block title %}Labs{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Labs</h1>
+<div class="scroll">
+  <div class="table">
+    <div class="tr th">
+      <div class="td">Week</div>
+      <div class="td">Handout</div>
+      <div class="td">Solutions</div>
+    </div>
+    <div class="tr">
+      <div class="td">2</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">3</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">4</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">5</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">6</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">7</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">8</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">9</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">10</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfilter %}
+{% endblock %}
+

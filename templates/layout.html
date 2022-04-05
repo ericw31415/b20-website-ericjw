@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} | CSCB20</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <h1>CSCB20</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="{{ url_for('home') }}">Home</a>
+          </li>
+          {% if session["username"] %}
+          <li>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+          </li>
+          <li>
+            <a href="{{ url_for('static', filename='files/sample.pdf')}}">Syllabus</a>
+          </li>
+          <li>
+            <a href="{{ url_for('home', _anchor='team') }}">Course Team</a>
+          </li>
+          <li>
+            <a href="{{ url_for('lectures') }}">Lectures</a>
+          </li>
+          <li>
+            <a href="{{ url_for('assignments') }}">Assignments</a>
+          </li>
+          <li>
+            <a href="{{ url_for('labs')}}">Labs</a>
+          </li>
+          <li>
+            <a href="{{ url_for('tests') }}">Tests</a>
+          </li>
+          <li>
+            <a href="{{ url_for('resources') }}">Resources</a>
+          </li>
+          <li>
+            <a href="https://piazza.com/utoronto.ca/winter2022/cscb20h3">Piazza</a>
+          </li>
+          <li>
+            <a href="https://markus.utsc.utoronto.ca/cscb20w22">MarkUs</a>
+          </li>
+          <li>
+            <a href="{{ url_for('dashboard', _anchor='feedback') }}">Feedback</a>
+          </li>
+          {% endif %}
+        </ul>
+        {% if not session["username"] %}
+        <a class="auth-link" href="{{ url_for('login') }}">Log In</a>
+        <a class="auth-link" href="{{ url_for('signup') }}">Sign Up</a>
+        {% endif %}
+        {% if session["username"] %}
+        <a href="{{ url_for('logout') }}">Log Out</a>
+        {% endif %}
+      </nav>
+    </header>
+    <main>
+      {% block main %}
+      {% endblock %}
+    </main>
+    <footer>
+      <div>
+        This website is from the
+        <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">Faculty of Computer Science</a>
+        at the University of Toronto Scarborough
+      </div>
+      <div>
+        Website designed by Eric Wan
+      </div>
+    </footer>
+  </body>
+</html>

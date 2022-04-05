@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}Assignments{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Assignments</h1>
+<p>
+  Here are the assignment and exercise topics, weights, and due dates.
+  I will be posting the exercise and assignment handouts here.
+  All exercises and assignments will be submitted on
+<a href="https://markus.utsc.utoronto.ca/cscb20w22">MarkUs</a>.
+</p>
+<div class="scroll">
+  <div class="table">
+    <div class="tr th">
+      <div class="td">Assignment</div>
+      <div class="td">Topic</div>
+      <div class="td">Due date</div>
+      <div class="td">Handout</div>
+      <div class="td">Solutions</div>
+    </div>
+    <div class="tr">
+      <div class="td">1</div>
+      <div class="td">Relational Algebra and MySQL</div>
+      <div class="td">February 17, 23:59</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">2</div>
+      <div class="td">HTML, CSS, PHP</div>
+      <div class="td">March 19, 23:59</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">3</div>
+      <div class="td">Web Application and Database</div>
+      <div class="td">March 31, 23:59</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfilter %}
+{% endblock %}

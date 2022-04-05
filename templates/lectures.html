@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %}Lectures{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Lectures</h1>
+<div class="scroll">
+  <div class="table">
+    <div class="tr th">
+      <div class="td">Week</div>
+      <div class="td">Topic</div>
+      <div class="td">Notes</div>
+    </div>
+    <div class="tr">
+      <div class="td">1</div>
+      <div class="td">Introduction, Databases background</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">3</div>
+      <div class="td">Schema Diagrams, Relational Algebra</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">4</div>
+      <div class="td">SQL and MySQL</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">5</div>
+      <div class="td">MySQL Queries, Creating and Editing Tables</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">6</div>
+      <div class="td">MySQL Outer Joins, Views, NULL, string functions, HTML</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">7</div>
+      <div class="td">HTML, CSS</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">8</div>
+      <div class="td">PHP</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">9</div>
+      <div class="td">PHP and SQL</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">10</div>
+      <div class="td">JavaScript and jQuery</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">11</div>
+      <div class="td">jQuery, AJAX, JSON</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+    <div class="tr">
+      <div class="td">12</div>
+      <div class="td">Last Year's final</div>
+      <div class="td">
+        <a href="{{ url_for('static', filename='files/sample.pdf') }}">PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfilter %}
+{% endblock %}

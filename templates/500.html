@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}500 Internal Server Error{% endblock %}
+
+{% block main %}
+{% filter indent(6, first=True) %}
+<h1>Internal Server Error</h1>
+<p>
+  The server encountered an internal error and was unable to complete your request.
+  Either the server is overloaded or there is an error in the application.
+</p>
+{% endfilter %}
+{% endblock %}
