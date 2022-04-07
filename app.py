@@ -6,7 +6,7 @@ import json
 import re
 import sqlite3
 
-DATABASE = "database.db"
+DATABASE = "assignment3.db"
 
 app = Flask(__name__)
 app.jinja_env.trim_blocks = True
